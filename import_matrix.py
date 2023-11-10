@@ -1,4 +1,5 @@
-def import_list():
+def maze_list() -> list:
+    """Создание матрицы лабиринта"""
     with open('maze-1.csv') as inputs:
         lin: list = inputs.readlines()
         old_matrix: list = []
