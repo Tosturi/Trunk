@@ -1,17 +1,24 @@
-n: int = int(input())
-lis: list = []
-for _ in range(n):
-    ni = input()
-    lis.append(ni)
-n2 = int(input())
-req_list = []
-for _ in range(n2):
-    req = input()
-    req_list.append(req.upper())
+def factorial():
+    stp = 1
+    fact = 1
+    while True:
+        fact = fact * stp
+        stp += 1
+        yield fact
+        # if stp > steps:
+        #     return
 
-for i in range(len(req_list)):
-    r = lis[i]
-    if req_list[0].upper() not in r.upper():
-        del lis[i]
 
-print(*lis, sep='\n')
+def iks():
+    step = 1
+    while True:
+        step += 1
+        yield step
+
+
+ff = factorial()
+res = 1
+for _ in range(10):
+    f = (lambda x, y: (1**x/y))(iks().__next__(), factorial().__next__())
+    res += f
+    print(res)

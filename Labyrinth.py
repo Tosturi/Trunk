@@ -1,35 +1,36 @@
-from import_matrix import maze_list
-
-my_maze: list = maze_list()
-new_maze: list = []
-
-def step_down(maze, x=1, y=1):
-    left = maze[y][x - 1]
-    right = maze[y][x + 1]
-    up = maze[y - 1][x]
-    down = maze[y + 1][x]
-    count = 0
+with open('maze-1.csv') as read_maze:
+    one_row = read_maze.readlines()
+    new_maze: list = []
+    for li in one_row:
+        new_maze.append(list(map(int, li.split(';'))))
+t = 0
 
 
-
-def check_step(x, y, maze):
-    left = maze[y][x-1]
-    right = maze[y][x+1]
-    up = maze[y-1][x]
-    down = maze[y+1][x]
-    if down == 0:
-        return True
-    elif up == 0:
-        return True
-    elif left == 0:
-        return True
-    elif right == 0:
-        return True
+def pathfinder(maze, y=1, x=1):
+    if y == len(maze)-2 and x == len(maze[0])-2:
+        maze[y][x] = 'x'
+        return maze, True
     else:
-        return False
+        for i in range(1, -2, -2):
+            if maze[y][x] == 0:
+                maze[y][x] = 2
+            if maze[y+i][x] == 0:
+                maze, flags = pathfinder(maze, y+i, x)
+                if flags:
+                    return maze, True
+            if maze[y][x+i] == 0:
+                maze, flags = pathfinder(maze, y, x+i)
+                if flags:
+                    return maze, True
+
+        maze[y][x] = '#'
+        return maze, False
 
 
-for i in step_down(my_maze):
-    for j in i:
-        print(j, end=' ')
+LAB, flag = pathfinder(new_maze)
+
+for k in LAB:
+    for w in k:
+        print(w, end=' ')
     print()
+print(t)
