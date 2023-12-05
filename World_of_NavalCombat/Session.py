@@ -7,8 +7,8 @@ class GameSession:
         self.player1 = player1
         self.player2 = player2
         self.current_player = player1
-        self.winner = None
         self.enemy = player1
+        self.winner = None
         self.arena = Arena()
 
 
