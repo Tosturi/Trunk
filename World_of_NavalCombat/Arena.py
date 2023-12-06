@@ -3,7 +3,7 @@
 class Arena:
     """Работа с игровым полем"""
     def __init__(self, row=10, column=10):
-        self.arena = [[(0, 0, False) for _ in range(row)] for _ in range(column)]
+        self.arena = [[(0, 0, False)] * row] * column
 
     def put_ship(self):
         pass
