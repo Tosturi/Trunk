@@ -1,9 +1,15 @@
-
-
 class Arena:
     """Работа с игровым полем"""
-    def __init__(self, row=10, column=10):
-        self.arena = [[(0, 0, False)] * row] * column
+
+    def __init__(self):
+        self.arena: list[list[dict]] = [[
+            {
+
+                "cell_type": 0,
+                "ship_number": 0,
+                "is_alive": False
+
+            } for _ in range(10)] for _ in range(10)]
 
     def put_ship(self):
         pass
