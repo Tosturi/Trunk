@@ -14,13 +14,13 @@ class Arena:
 
             } for _ in range(10)] for _ in range(10)]
 
-    def put_ship(self):
+    def put_ship(self, row: int, column: int, direction: Direction):
         pass
 
-    def __set_cell(self, row, column):
+    def __set_cell(self, row: int, column: int):
         pass
 
-    def __check_cell(self, row, column):
+    def __check_cell(self, row: int, column: int):
         pass
 
 
