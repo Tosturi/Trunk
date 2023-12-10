@@ -1,3 +1,6 @@
+from enums import Direction, ShotResult
+
+
 class Arena:
     """Работа с игровым полем"""
 
