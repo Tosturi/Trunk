@@ -10,4 +10,3 @@ class ShotResult(enum.Enum):
     miss = 0
     hit = 1
     kill = 2
-
