@@ -8,5 +8,7 @@ class CreatePlayer:
         self.enemy_arena = Arena()
 
     def deploy_fleet(self):
-        """Расстановка кораблей"""
+        """ Расстановка кораблей
+            Метод является абстрактным
+        """
         raise NotImplementedError
