@@ -15,7 +15,7 @@ class Arena:
             } for _ in range(10)] for _ in range(10)]
 
     def put_ship(self, row: int, column: int, direction: Direction):
-        """Установка коробля на арене"""
+        """Установка корабля на арене"""
 
     def __set_cell(self, row: int, column: int):
         pass

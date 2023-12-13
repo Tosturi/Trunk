@@ -13,5 +13,6 @@ class GameSession:
         self.player1.deploy_fleet()
         self.player2.deploy_fleet()
 
-    def __switch_player(self):
+    def __switch_player(self) -> None:
+        """Метод призванный менять передавать ход следующему игроку"""
         self.current_player, self.enemy = self.enemy, self.current_player

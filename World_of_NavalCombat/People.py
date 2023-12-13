@@ -10,4 +10,4 @@ class Human(CreatePlayer):
         self.name = name
 
     def deploy_fleet(self):
-        """Расстановка короблей игроком"""
+        """Расстановка кораблей игроком"""
