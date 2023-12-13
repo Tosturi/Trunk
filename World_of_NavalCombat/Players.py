@@ -11,4 +11,4 @@ class CreatePlayer:
         """ Расстановка кораблей
             Метод является абстрактным
         """
-        raise NotImplementedError
+        raise NotImplementedError("You're using an abstract method")
