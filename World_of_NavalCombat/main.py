@@ -1,6 +1,3 @@
-from Players import CreatePlayer
-from People import Human
-from Bots import Bot
 from Session import GameSession
 
 
@@ -20,4 +17,5 @@ def player_input(player_number: int):
 
 if __name__ == '__main__':
     player1 = player_input(1)
-    print(player1)
+    player2 = player_input(2)
+    game = GameSession(player1, player2)

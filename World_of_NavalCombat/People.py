@@ -11,3 +11,6 @@ class Human(CreatePlayer):
 
     def deploy_fleet(self):
         """Расстановка кораблей игроком"""
+
+    def shoot(self) -> tuple[int, int]:
+        """Спросить у игрока координаты выстрела"""

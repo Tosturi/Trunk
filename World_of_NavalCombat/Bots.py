@@ -1,6 +1,6 @@
 from Players import CreatePlayer
 from enums import Direction
-import random
+from random import randint, choice
 
 
 class Bot(CreatePlayer):

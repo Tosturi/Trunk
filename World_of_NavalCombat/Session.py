@@ -1,4 +1,7 @@
 from Players import CreatePlayer
+from enums import ShotResults
+from Bots import Bot
+from People import Human
 
 
 class GameSession:
@@ -16,3 +19,24 @@ class GameSession:
     def __switch_player(self) -> None:
         """Метод призванный менять передавать ход следующему игроку"""
         self.current_player, self.enemy = self.enemy, self.current_player
+
+    def start_battle(self):
+        while self.winner is None:
+            # Спрашиваем координаты выстрела
+            row, column = self.current_player.shoot()
+            # Спрашиваем каков результат выстрела
+            shoot_result = self.enemy.check_shoot(row, column)
+
+            match shoot_result:
+                case ShotResults.miss:
+                    self.__switch_player()
+                case ShotResults.hit:
+                    pass
+                case ShotResults.kill:
+                    if self.enemy.all_dead():
+                        self.winner = self.current_player
+
+        if self.winner.__name__ == Bot:
+            print("Congratulations to Bot")
+        else:
+            print(f"Congratulations to {self.winner}")

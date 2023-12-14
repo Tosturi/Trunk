@@ -1,4 +1,4 @@
-from enums import Direction, ShotResult
+from enums import Direction, ShotResults
 
 
 class Arena:
@@ -22,6 +22,9 @@ class Arena:
 
     def __check_cell(self, row: int, column: int):
         pass
+
+    def check_shoot(self, row: int, column: int) -> ShotResults:
+        """Проверяем результат выстрела"""
 
 
 if __name__ == '__main__':
