@@ -1,21 +1,19 @@
-from Session import GameSession
-
 
 def player_input(player_number: int):
     """В данной функции игрок выбирает кто будет играть"""
-    who_is_player = input("Who will play? (User/bot): ").lower()
-    if who_is_player == 'user':
-        user_name = input("Enter the user name: ")
-    else:
-        user_name = f"Bot {player_number}"
-
-    if who_is_player not in ['user', 'bot']:
-        return player_input(player_number)
-    else:
+    while True:
+        who_is_player = input("Who will play? (User/bot): ").lower()
+        user_name = ""
+        match who_is_player:
+            case "user":
+                user_name = input("Enter the user name: ")
+            case "bot":
+                user_name = input("Enter the bot name: ")
+            case _:
+                print("Incorrect entry try again")
         return who_is_player, user_name
 
 
 if __name__ == '__main__':
-    player1 = player_input(1)
-    player2 = player_input(2)
-    game = GameSession(player1, player2)
+    print(player_input(1))
+    print(player_input(2))

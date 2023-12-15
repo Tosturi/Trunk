@@ -4,9 +4,10 @@ from enums import ShotResults
 
 class CreatePlayer:
     """Создание сущности игрока"""
-    def __init__(self, name):
+    def __init__(self, type_player: str, name: str):
         self.own_arena = Arena()
         self.enemy_arena = Arena()
+        self.type_player = type_player
         self.name = name
 
     def shoot(self) -> tuple[int, int]:
