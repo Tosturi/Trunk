@@ -3,7 +3,7 @@ from Bots import Bot
 from Session import GameSession
 
 
-def player_input(player_number: int):
+def player_input():
     """В данной функции игрок выбирает кто будет играть, а так же имя игрока/бота"""
     while True:
         who_is_player = input("Who will play? (User/bot): ").lower()
@@ -18,7 +18,7 @@ def player_input(player_number: int):
                 print("Incorrect entry try again")
 
 
-player1 = player_input(1)
-player2 = player_input(2)
+player1 = player_input()
+player2 = player_input()
 
-GameSession(player1, player2)
+GameSession(player1, player2).start_battle()

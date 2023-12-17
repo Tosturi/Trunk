@@ -18,10 +18,10 @@ class Arena:
         """Установка корабля на арене"""
 
     def __set_cell(self, row: int, column: int):
-        pass
+        """Изменения значений в ячейке"""
 
     def __check_cell(self, row: int, column: int):
-        pass
+        """Проверка отдельной ячейки"""
 
     def check_shoot(self, row: int, column: int) -> ShotResults:
         """Проверяем результат выстрела"""

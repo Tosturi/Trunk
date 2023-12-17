@@ -22,6 +22,7 @@ class GameSession:
 
     def start_battle(self):
         while self.winner is None:
+            print(f"{self.current_player.name}'s move")
             # Спрашиваем координаты выстрела
             row, column = self.current_player.shoot()
             # Спрашиваем каков результат выстрела

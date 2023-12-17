@@ -14,4 +14,3 @@ class Bot(CreatePlayer):
         row = randint(0, len(self.enemy_arena.arena)-1)
         column = randint(0, len(self.enemy_arena.arena)-1)
         return row, column
-
