@@ -24,6 +24,10 @@ class CreatePlayer:
         return self.enemy_arena.check_shoot(row, column)
 
     def all_dead(self) -> bool:
-        """Проверяем остались ли корабли"""
+        """Проверяем остались ли корабли на вражеской арене"""
+        for i in self.enemy_arena.arena:
+            for j in i:
+                match j["is_alive"]:
+                    case True:
+                        return True
         return False
-

@@ -4,10 +4,9 @@ from Session import GameSession
 
 
 def player_input(player_number: int):
-    """В данной функции игрок выбирает кто будет играть"""
+    """В данной функции игрок выбирает кто будет играть, а так же имя игрока/бота"""
     while True:
         who_is_player = input("Who will play? (User/bot): ").lower()
-        user_name = ""
         match who_is_player:
             case "user":
                 user_name = input("Enter the user name: ")
