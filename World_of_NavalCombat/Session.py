@@ -36,7 +36,4 @@ class GameSession:
                     if self.enemy.all_dead():
                         self.winner = self.current_player
 
-        if self.winner.__name__ == Bot:
-            print("Congratulations to Bot")
-        else:
-            print(f"Congratulations to {self.winner}")
+        print(self.winner.name)

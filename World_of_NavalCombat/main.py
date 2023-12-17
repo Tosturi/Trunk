@@ -1,3 +1,7 @@
+from People import Human
+from Bots import Bot
+from Session import GameSession
+
 
 def player_input(player_number: int):
     """В данной функции игрок выбирает кто будет играть"""
@@ -7,13 +11,15 @@ def player_input(player_number: int):
         match who_is_player:
             case "user":
                 user_name = input("Enter the user name: ")
+                return Human(user_name)
             case "bot":
                 user_name = input("Enter the bot name: ")
+                return Bot(user_name)
             case _:
                 print("Incorrect entry try again")
-        return who_is_player, user_name
 
 
-if __name__ == '__main__':
-    print(player_input(1))
-    print(player_input(2))
+player1 = player_input(1)
+player2 = player_input(2)
+
+GameSession(player1, player2)
