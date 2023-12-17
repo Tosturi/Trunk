@@ -27,7 +27,6 @@ class CreatePlayer:
         """Проверяем остались ли корабли на вражеской арене"""
         for i in self.enemy_arena.arena:
             for j in i:
-                match j["is_alive"]:
-                    case True:
-                        return True
+                if j["is_alive"]:
+                    return True
         return False
