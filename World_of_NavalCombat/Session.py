@@ -20,7 +20,7 @@ class GameSession:
         """Метод призванный менять передавать ход следующему игроку"""
         self.current_player, self.enemy = self.enemy, self.current_player
 
-    def start_battle(self):
+    def start_battle(self) -> None:
         while self.winner is None:
             print(f"{self.current_player.name}'s move")
             # Спрашиваем координаты выстрела
@@ -30,6 +30,7 @@ class GameSession:
 
             match shoot_result:
                 case ShotResults.miss:
+                    print("Miss!")
                     self.__switch_player()
                 case ShotResults.hit:
                     pass

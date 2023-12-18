@@ -25,6 +25,11 @@ class Arena:
 
     def check_shoot(self, row: int, column: int) -> ShotResults:
         """Проверяем результат выстрела"""
+        if self.arena[row][column]["is_alive"]:
+            self.arena[row][column]["is_alive"] = False
+            return ShotResults.hit
+        else:
+            return ShotResults.miss
 
 
 if __name__ == '__main__':
