@@ -8,6 +8,8 @@ class CreatePlayer:
         self.own_arena = Arena()
         self.enemy_arena = Arena()
         self.name = name
+        self.row_len = len(self.enemy_arena.arena)
+        self.column_len = len(self.enemy_arena.arena[0])
 
     def shoot(self) -> tuple[int, int]:
         """Выстрел игрока/бота. Возвращает координаты (row, column)"""

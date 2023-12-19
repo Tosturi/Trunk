@@ -13,9 +13,16 @@ class Arena:
                 "is_alive": False
 
             } for _ in range(10)] for _ in range(10)]
+        self.row_len = len(self.arena)
+        self.column_len = len(self.arena[0])
 
-    def put_ship(self, row: int, column: int, direction: Direction):
+    def put_ship(self, ship_type: int, number: int, coordinates: tuple):
         """Установка корабля на арене"""
+        # for row, column, direct in coordinates:
+        #     if 0 <= row <= self.row_len and 0 <= column <= self.column_len:
+        #         self.arena[row][column]["cell_type"] = ship_type
+        #         self.arena[row][column]["ship_number"] = number
+        #         self.arena[row][column]["is_alive"] = True
 
     def __set_cell(self, row: int, column: int):
         """Изменения значений в ячейке"""

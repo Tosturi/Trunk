@@ -1,4 +1,4 @@
-from People import Human
+from Human import Human
 from Bots import Bot
 from Session import GameSession
 

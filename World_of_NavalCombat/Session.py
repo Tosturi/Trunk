@@ -1,7 +1,7 @@
 from Players import CreatePlayer
 from enums import ShotResults
 from Bots import Bot
-from People import Human
+from Human import Human
 
 
 class GameSession:
