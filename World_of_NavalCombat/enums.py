@@ -2,8 +2,10 @@ import enum
 
 
 class Direction(enum.Enum):
-    horizontal: tuple = (0, 1)
-    vertical: tuple = (1, 0)
+    right: tuple = (0, 1)
+    left: tuple = (0, -1)
+    down: tuple = (1, 0)
+    up: tuple = (-1, 0)
 
 
 class ShotResults(enum.Enum):

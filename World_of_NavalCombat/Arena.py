@@ -16,20 +16,44 @@ class Arena:
         self.row_len = len(self.arena)
         self.column_len = len(self.arena[0])
 
-    def put_ship(self, ships: tuple[int, int], coordinates: tuple[int, int, Direction]):
+    def put_ship(self, ship: tuple[int, int], coordinates: tuple[int, int, tuple[int, int]]):
         """Установка корабля на арене"""
-        ship_type, number = ships
-        for row, column, direct in coordinates:
-            if 0 <= row <= self.row_len and 0 <= column <= self.column_len:
-                self.arena[row][column]["cell_type"] = ship_type
-                self.arena[row][column]["ship_number"] = number
-                self.arena[row][column]["is_alive"] = True
+        row, column, direct = coordinates
+        ship_type, number = ship
+        for _ in range(ship_type):
+            self.__set_cell(row, column, ship_type, number)
+            row += direct[0]
+            column += direct[1]
 
-    def __set_cell(self, row: int, column: int):
+
+    def __set_cell(self, row: int, column: int, ship_type: int, ship_number: int):
         """Изменения значений в ячейке"""
+        cell = self.arena[row][column]
+        cell["cell_type"] = ship_type
+        cell["ship_number"] = ship_number
+        cell["is_alive"] = True
 
-    def __check_cell(self, row: int, column: int):
-        """Проверка отдельной ячейки"""
+    def __check_cell(self, row: int, column: int) -> bool:
+        """Проверка отдельной ячейки на возможность установки корабля"""
+        if 0 <= row < self.row_len and 0 <= column < self.column_len:
+            for n in range(-1, 2):
+                for m in range(-1, 2):
+                    cell = self.arena[row+n][column+m]
+                    if cell["cell_type"] != 0 or cell["ship_number"] != 0 or cell["is_alive"]:
+                        return False
+            return True
+        else:
+            return False
+
+    def check_direction(self, coordinates: tuple[int, int, tuple], len_cell: int) -> bool:
+        """Проверка направления установки корабля"""
+        row, column, direct = coordinates
+        for _ in range(len_cell):
+            if not self.__check_cell(row, column):
+                return False
+            row += direct[0]
+            column += direct[1]
+        return True
 
     def __check_kill(self, row: int, column: int) -> bool:
         """Проверяем уничтожен ли корабль после попадания"""

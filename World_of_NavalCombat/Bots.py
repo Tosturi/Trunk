@@ -14,7 +14,7 @@ class Bot(CreatePlayer):
         """Расстановка кораблей ботом"""
         row = randint(0, self.row_len - 1)
         column = randint(0, self.column_len - 1)
-        direct = choice((Direction.vertical, Direction.horizontal))
+        direct = choice((Direction.up, Direction.down, Direction.left, Direction.right))
         self.own_arena.put_ship(row, column, direct)
 
     def shoot(self) -> tuple[int, int]:
