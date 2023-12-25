@@ -16,13 +16,14 @@ class Arena:
         self.row_len = len(self.arena)
         self.column_len = len(self.arena[0])
 
-    def put_ship(self, ship_type: int, number: int, coordinates: tuple):
+    def put_ship(self, ships: tuple[int, int], coordinates: tuple[int, int, Direction]):
         """Установка корабля на арене"""
-        # for row, column, direct in coordinates:
-        #     if 0 <= row <= self.row_len and 0 <= column <= self.column_len:
-        #         self.arena[row][column]["cell_type"] = ship_type
-        #         self.arena[row][column]["ship_number"] = number
-        #         self.arena[row][column]["is_alive"] = True
+        ship_type, number = ships
+        for row, column, direct in coordinates:
+            if 0 <= row <= self.row_len and 0 <= column <= self.column_len:
+                self.arena[row][column]["cell_type"] = ship_type
+                self.arena[row][column]["ship_number"] = number
+                self.arena[row][column]["is_alive"] = True
 
     def __set_cell(self, row: int, column: int):
         """Изменения значений в ячейке"""
@@ -30,19 +31,24 @@ class Arena:
     def __check_cell(self, row: int, column: int):
         """Проверка отдельной ячейки"""
 
+    def __check_kill(self, row: int, column: int) -> bool:
+        """Проверяем уничтожен ли корабль после попадания"""
+        ship_type = self.arena[row][column]["cell_type"]
+        ship_number = self.arena[row][column]["ship_number"]
+        for i in self.arena:
+            for j in i:
+                if j["cell_type"] == ship_type and j["ship_number"] == ship_number:
+                    if j["is_alive"]:
+                        return False
+        return True
+
     def check_shoot(self, row: int, column: int) -> ShotResults:
         """Проверяем результат выстрела"""
         if self.arena[row][column]["is_alive"]:
             self.arena[row][column]["is_alive"] = False
-            return ShotResults.hit
+            if self.__check_kill(row, column):
+                return ShotResults.kill
+            else:
+                return ShotResults.hit
         else:
             return ShotResults.miss
-
-
-if __name__ == '__main__':
-    field = Arena()
-
-    for i in field.arena:
-        for j in i:
-            print(j, end='\t')
-        print()

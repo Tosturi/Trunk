@@ -33,7 +33,7 @@ class GameSession:
                     print("Miss!")
                     self.__switch_player()
                 case ShotResults.hit:
-                    pass
+                    print("hit!")
                 case ShotResults.kill:
                     if self.enemy.all_dead():
                         self.winner = self.current_player
