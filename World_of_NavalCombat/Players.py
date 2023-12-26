@@ -41,8 +41,8 @@ class CreatePlayer:
         for i in self.own_arena.arena:
             for j in i:
                 if j["is_alive"]:
-                    return True
-        return False
+                    return False
+        return True
 
     def show_arena(self, arena):
         """Вывод арены игроку"""

@@ -35,8 +35,9 @@ class GameSession:
                     self.__switch_player()
                 case ShotResults.hit:
                     print("hit!")
-                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 1
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 2
                 case ShotResults.kill:
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 2
                     if self.enemy.all_dead():
                         self.winner = self.current_player
 
