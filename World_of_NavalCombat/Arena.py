@@ -12,7 +12,7 @@ class Arena:
                 "ship_number": 0,
                 "is_alive": False
 
-            } for _ in range(10)] for _ in range(10)]
+            } for _ in range(11)] for _ in range(11)]
         self.row_len = len(self.arena)
         self.column_len = len(self.arena[0])
 
