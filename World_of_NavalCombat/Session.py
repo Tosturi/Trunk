@@ -1,6 +1,5 @@
 from Players import CreatePlayer
 from enums import ShotResults
-from Bots import Bot
 from Human import Human
 
 
@@ -23,6 +22,7 @@ class GameSession:
     def start_battle(self) -> None:
         while self.winner is None:
             print(f"{self.current_player.name}'s move")
+            self.current_player.show_arena(self.current_player.enemy_arena.arena)
             # Спрашиваем координаты выстрела
             row, column = self.current_player.shoot()
             # Спрашиваем каков результат выстрела
@@ -31,11 +31,13 @@ class GameSession:
             match shoot_result:
                 case ShotResults.miss:
                     print("Miss!")
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 1
                     self.__switch_player()
                 case ShotResults.hit:
                     print("hit!")
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 1
                 case ShotResults.kill:
                     if self.enemy.all_dead():
                         self.winner = self.current_player
 
-        print(self.winner.name)
+        print(f"{self.winner.name} is winner!")
