@@ -12,7 +12,7 @@ class Arena:
                 "ship_number": 0,
                 "is_alive": False
 
-            } for _ in range(11)] for _ in range(11)]
+            } for _ in range(10)] for _ in range(10)]
         self.row_len = len(self.arena)
         self.column_len = len(self.arena[0])
 
@@ -34,20 +34,17 @@ class Arena:
 
     def __check_cell(self, row: int, column: int) -> bool:
         """Проверка отдельной ячейки на возможность установки корабля"""
-        if 0 <= row < self.row_len and 0 <= column < self.column_len:
-            for n in range(-1, 2):
-                for m in range(-1, 2):
-                    new_row = row + n
-                    new_column = column + m
-                    if 0 <= new_row < self.row_len and 0 <= new_column < self.column_len:
-                        cell = self.arena[new_row][new_column]
-                        if cell["cell_type"] != 0 or cell["ship_number"] != 0 or cell["is_alive"]:
-                            return False
-                    else:
+        for n in range(-1, 2):
+            for m in range(-1, 2):
+                new_row = row + n
+                new_column = column + m
+                if 0 <= new_row < self.row_len and 0 <= new_column < self.column_len:
+                    cell = self.arena[new_row][new_column]
+                    if cell["cell_type"] != 0 or cell["ship_number"] != 0 or cell["is_alive"]:
                         return False
-            return True
-        else:
-            return False
+                else:
+                    return False
+        return True
 
     def check_direction(self, coordinates: tuple[int, int, tuple], len_cell: int) -> bool:
         """Проверка направления установки корабля"""
