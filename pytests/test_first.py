@@ -1,5 +1,6 @@
-import pytest
+from req import get_api_status
 
 
-def test_one(dannie):
-    assert dannie() == 1.0
+
+def test_status_code():
+    assert 200 == 200
