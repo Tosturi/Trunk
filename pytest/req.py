@@ -1,9 +1,18 @@
 import requests
+import allure
+from pydantic import BaseModel
 
 
-BASE_URL = 'https://reqres.in'
+class ApiCommands:
 
+    def __init__(self, base_url):
+        self._base_url = base_url
 
-def get_api():
-    response = requests.get(BASE_URL + '/api/users/1')
-    return response
+    @allure.step("Get request from {path}")
+    def get(self, path):
+        url = self._base_url + path
+        return requests.get(url)
+
+    @allure.step("Validate result data")
+    def validate_data(self, result: object, model: BaseModel):
+        return model.model_validate(result)

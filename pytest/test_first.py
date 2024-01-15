@@ -1,8 +1,19 @@
+import allure
+from Users_Data.User import User
 
 
-def test_status_code(get_api):
-    assert get_api.status_code == 200
+@allure.suite('Test API')
+class TestApi:
 
+    BASE_URL = "https://reqres.in"
 
-def test_json_data(get_api):
-    assert "data" in get_api.json()
+    @allure.sub_suite('Check status code')
+    def test_status_code(self, api_client):
+        result = api_client.get("/api/users/2")
+        assert result.status_code == 200
+
+    @allure.sub_suite('Validate user data')
+    def test_json_validate(self, api_client):
+        result = api_client.get("/api/users/2")
+        obj = result.json()
+        assert api_client.validate_data(obj, User)
