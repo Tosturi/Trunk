@@ -1,5 +1,5 @@
 import pytest
-from req import ApiCommands
+from requsets_api.req import ApiCommands
 
 
 @pytest.fixture(scope="class")
