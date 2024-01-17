@@ -7,7 +7,7 @@ class TestApi:
 
     BASE_URL = "https://reqres.in"
 
-    @allure.sub_suite('Check status code')
+    @allure.sub_suite('Check status code (GET)')
     def test_status_code(self, api_client):
         result = api_client.get("/")
         assert result.status_code == 200
@@ -25,3 +25,9 @@ class TestApi:
         result = api_client.get("/api/users", {"page": 1})
         obj = result.json()
         assert api_client.validate_data(obj, UserList)
+
+    @allure.sub_suite('Check POST request')
+    def test_post(self, api_client):
+        user_data = api_client.create_data()
+        result = api_client.post('/api/users', user_data)
+        assert result.status_code == 201
