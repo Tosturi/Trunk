@@ -1,5 +1,4 @@
-from pydantic import BaseModel, ValidationError
-import requests
+from pydantic import BaseModel
 
 
 class UserData(BaseModel):
@@ -29,16 +28,14 @@ class UserList(BaseModel):
     support: Support
 
 
-sup = """
-{
-        "url": "https://http.cat/",
-        "text": "something else"
-}
-"""
+class CreateData(BaseModel):
+    name: str = None
+    job: str = None
+    id: str
+    createdAt: str
 
-try:
-    ps = Support.model_validate_json(sup)
-except ValidationError as e:
-    print(e.json())
-else:
-    print(ps)
+
+class UpdateData(BaseModel):
+    name: str = None
+    job: str = None
+    updatedAt: str
