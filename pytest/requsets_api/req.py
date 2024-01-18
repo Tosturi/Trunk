@@ -1,5 +1,6 @@
 import requests
 import allure
+from pydantic import ValidationError
 
 
 @allure.step("Get request from {path}")
@@ -42,4 +43,9 @@ def delete(base_url, path) -> requests.Response:
 
 @allure.step("Validate result data")
 def validate_data(result: object, model):
-    return model.model_validate(result)
+    try:
+        model.model_validate(result)
+    except ValidationError:
+        return False
+    else:
+        return True
