@@ -23,7 +23,7 @@ def test_get_single_user():
 @allure.tag('GET')
 @allure.severity(allure.severity_level.NORMAL)
 def test_get_user_list():
-    result_list = r.get(BASE_URL,"/api/users", {"page": 1})
+    result_list = r.get(BASE_URL, "/api/users", {"page": 1})
     obj = result_list.json()
     with allure.step('Checking status code'):
         assert result_list.status_code == 200
