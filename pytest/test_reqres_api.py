@@ -6,6 +6,8 @@ BASE_URL: str = "https://reqres.in"
 
 
 @allure.title('Check GET request (Single user)')
+@allure.tag('GET')
+@allure.severity(allure.severity_level.CRITICAL)
 def test_get_single_user():
     result_user = r.get(BASE_URL, "/api/users/2", "")
     obj = result_user.json()
@@ -18,6 +20,8 @@ def test_get_single_user():
 
 
 @allure.title('Check GET request (List users)')
+@allure.tag('GET')
+@allure.severity(allure.severity_level.NORMAL)
 def test_get_user_list():
     result_list = r.get(BASE_URL,"/api/users", {"page": 1})
     obj = result_list.json()
@@ -28,6 +32,8 @@ def test_get_user_list():
 
 
 @allure.title('Check POST request')
+@allure.tag('POST')
+@allure.severity(allure.severity_level.CRITICAL)
 def test_post(create_user_data):
     user_data = create_user_data
     result_create = r.post(BASE_URL, '/api/users', user_data)
@@ -36,9 +42,14 @@ def test_post(create_user_data):
         assert result_create.status_code == 201
     with allure.step('Checking created data'):
         assert r.validate_data(obj, CreateData)
+        if len(user_data) > 0:
+            assert obj['name'] == user_data['name']
+            assert obj['job'] == user_data['job']
 
 
 @allure.title('Check PUT request')
+@allure.tag('PUT')
+@allure.severity(allure.severity_level.CRITICAL)
 def test_put(create_user_data):
     user_data = create_user_data
     result_put = r.put(BASE_URL, '/api/users/2', user_data)
@@ -53,6 +64,8 @@ def test_put(create_user_data):
 
 
 @allure.title('Check PATCH request')
+@allure.tag('PATCH')
+@allure.severity(allure.severity_level.NORMAL)
 def test_patch(create_user_data):
     user_data = create_user_data
     result_patch = r.patch(BASE_URL, '/api/users/2', user_data)
@@ -67,6 +80,8 @@ def test_patch(create_user_data):
 
 
 @allure.title('Check DELETE request')
+@allure.tag('DELETE')
+@allure.severity(allure.severity_level.CRITICAL)
 def test_delete():
     result_delete = r.delete(BASE_URL, '/api/users/2')
     obj = result_delete.text
