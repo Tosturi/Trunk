@@ -42,9 +42,8 @@ def test_post(create_user_data):
         assert result_create.status_code == 201
     with allure.step('Checking created data'):
         assert r.validate_data(obj, CreateData)
-        if len(user_data) > 0:
-            assert obj['name'] == user_data['name']
-            assert obj['job'] == user_data['job']
+        assert obj['name'] == user_data['name']
+        assert obj['job'] == user_data['job']
 
 
 @allure.title('Check PUT request')
