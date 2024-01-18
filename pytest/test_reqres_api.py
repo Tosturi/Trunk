@@ -2,7 +2,7 @@ import allure
 import requsets_api.req as r
 from Users_Data.User import UserData, SingleUser, Support, UserList, CreateData, UpdateData
 
-BASE_URL = "https://reqres.in"
+BASE_URL: str = "https://reqres.in"
 
 
 @allure.title('Check GET request (Single user)')

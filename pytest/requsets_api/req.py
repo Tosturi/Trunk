@@ -42,7 +42,7 @@ def delete(base_url, path) -> requests.Response:
 
 
 @allure.step("Validate result data")
-def validate_data(result: object, model):
+def validate_data(result: object, model) -> bool:
     try:
         model.model_validate(result)
     except ValidationError:

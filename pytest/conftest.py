@@ -1,10 +1,9 @@
 import allure
 import pytest
-from time import time
 from random import choice
 
-PROFESSIONS = ('Architect', 'Biologist', 'Chemist', 'Dentist', 'Engineer', 'Space marine')
-NAMES = ('Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Alex', 'Gabriel Angelos')
+PROFESSIONS: tuple = ('Architect', 'Biologist', 'Chemist', 'Dentist', 'Engineer', 'Space marine')
+NAMES: tuple = ('Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Alex', 'Gabriel Angelos')
 
 
 @allure.step('Generate user data')
