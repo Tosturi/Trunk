@@ -1,6 +1,5 @@
 from Players import CreatePlayer
 from enums import ShotResults
-from Human import Human
 
 
 class GameSession:
@@ -35,9 +34,9 @@ class GameSession:
                     self.__switch_player()
                 case ShotResults.hit:
                     print("hit!")
-                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 2
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = "x"
                 case ShotResults.kill:
-                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 2
+                    self.current_player.enemy_arena.arena[row][column]["cell_type"] = 'X'
                     if self.enemy.all_dead():
                         self.winner = self.current_player
 

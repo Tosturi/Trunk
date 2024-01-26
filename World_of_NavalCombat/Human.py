@@ -6,7 +6,7 @@ class Human(CreatePlayer):
 
     def deploy_fleet(self):
         """Расстановка кораблей игроком"""
-        ships = self.list_ships
+        ships = self.list_ships[:]
         while len(ships) > 0:
             try:
                 ship = ships[0]

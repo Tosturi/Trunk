@@ -38,10 +38,11 @@ class Arena:
             for m in range(-1, 2):
                 new_row = row + n
                 new_column = column + m
-                if 0 <= new_row < self.row_len and 0 <= new_column < self.column_len:
-                    cell = self.arena[new_row][new_column]
-                    if cell["cell_type"] != 0 or cell["ship_number"] != 0 or cell["is_alive"]:
-                        return False
+                if 0 <= row < self.row_len and 0 <= column < self.column_len:
+                    if new_row < self.row_len and new_column < self.column_len:
+                        cell = self.arena[new_row][new_column]
+                        if cell["cell_type"] != 0 or cell["ship_number"] != 0 or cell["is_alive"]:
+                            return False
                 else:
                     return False
         return True

@@ -1,5 +1,4 @@
 from Players import CreatePlayer
-from enums import Direction
 from random import randint, choice
 
 
@@ -12,7 +11,7 @@ class Bot(CreatePlayer):
 
     def deploy_fleet(self) -> None:
         """Расстановка кораблей ботом"""
-        ships = self.list_ships
+        ships = self.list_ships[:]
         for ship in ships:
             placed = False
             while not placed:
