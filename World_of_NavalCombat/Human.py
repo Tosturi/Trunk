@@ -4,7 +4,7 @@ from Players import CreatePlayer
 class Human(CreatePlayer):
     """Создание игрока-человека"""
 
-    def deploy_fleet(self):
+    def deploy_fleet(self) -> None:
         """Расстановка кораблей игроком"""
         ships = self.list_ships[:]
         while len(ships) > 0:

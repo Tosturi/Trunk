@@ -7,7 +7,7 @@ class Bot(CreatePlayer):
 
     def __init__(self, name: str):
         super().__init__(name)
-        self.bot_steps = set()
+        self._bot_steps = set()
 
     def deploy_fleet(self) -> None:
         """Расстановка кораблей ботом"""
@@ -31,9 +31,9 @@ class Bot(CreatePlayer):
         while True:
             row = randint(0, self.row_len-1)
             column = randint(0, self.column_len-1)
-            if (row, column) not in self.bot_steps:
-                self.bot_steps.add((row, column))
+            if (row, column) not in self._bot_steps:
+                self._bot_steps.add((row, column))
                 return row, column
-            elif len(self.bot_steps) == self.row_len * self.column_len:
+            elif len(self._bot_steps) == self.row_len * self.column_len:
                 print("The bot went through every possible option!")
                 exit()

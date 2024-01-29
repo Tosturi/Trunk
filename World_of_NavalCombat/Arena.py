@@ -2,7 +2,10 @@ from enums import ShotResults
 
 
 class Arena:
-    """Работа с игровым полем"""
+    """Работа с игровым полем
+       В рамках данного класса происходит создание игрового поля,
+       проверка/изменение отдельных ячеек игрового поля
+    """
 
     def __init__(self):
         self.arena: list[list[dict]] = [[
@@ -16,7 +19,7 @@ class Arena:
         self.row_len = len(self.arena)
         self.column_len = len(self.arena[0])
 
-    def put_ship(self, ship: tuple[int, int], coordinates: tuple[int, int, tuple[int, int]]):
+    def put_ship(self, ship: tuple[int, int], coordinates: tuple[int, int, tuple[int, int]]) -> None:
         """Установка корабля на арене"""
         row, column, direct = coordinates
         ship_type, number = ship
@@ -25,7 +28,7 @@ class Arena:
             row += direct[0]
             column += direct[1]
 
-    def __set_cell(self, row: int, column: int, ship_type: int, ship_number: int):
+    def __set_cell(self, row: int, column: int, ship_type: int, ship_number: int) -> None:
         """Изменения значений в ячейке"""
         cell = self.arena[row][column]
         cell["cell_type"] = ship_type

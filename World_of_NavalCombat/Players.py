@@ -26,7 +26,7 @@ class CreatePlayer:
         """Выстрел игрока/бота. Возвращает координаты (row, column)"""
         raise NotImplementedError
 
-    def deploy_fleet(self):
+    def deploy_fleet(self) -> None:
         """ Расстановка кораблей
             Метод является абстрактным
         """
@@ -44,7 +44,7 @@ class CreatePlayer:
                     return False
         return True
 
-    def show_arena(self, arena):
+    def show_arena(self, arena) -> None:
         """Вывод арены игроку"""
         print(' ', end='\t')
         for m in range(self.column_len):
