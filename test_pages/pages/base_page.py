@@ -13,11 +13,11 @@ class BasePage:
 
     def wait_present_element(self, element, timer=10):
         try:
-            result = Wait(self.browser, timer).until(ec.presence_of_element_located(element),
-                                                     message=f'Element {element} is not present')
+            Wait(self.browser, timer).until(ec.presence_of_element_located(element),
+                                            message=f'Element {element} is not present')
         except TimeoutException as e:
-            return e
-        return result
+            return False
+        return True
 
     def is_element_present(self, how, selector):
         try:
