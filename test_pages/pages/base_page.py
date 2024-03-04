@@ -15,7 +15,7 @@ class BasePage:
         try:
             Wait(self.browser, timer).until(ec.presence_of_element_located(element),
                                             message=f'Element {element} is not present')
-        except TimeoutException as e:
+        except TimeoutException:
             return False
         return True
 
