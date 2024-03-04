@@ -14,10 +14,12 @@ class LoginPage(BasePage):
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
+        print('log in')
         assert self.wait_present_element(LoginPageLocators.LOGIN_FORM), 'Login Form not found!'
 
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
+        print('registr')
         assert self.wait_present_element(LoginPageLocators.REGISTRATION_FORM), 'Registration Form not found!'
 
 
