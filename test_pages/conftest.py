@@ -11,7 +11,7 @@ def pytest_addoption(parser):
                      help='Choose correct language, for example - en-gb')
 
 
-@pytest.fixture(scope='class')
+@pytest.fixture(scope='function')
 def browser(request):
     """Создание браузера согласно заданным параметрам"""
     browser_name = request.config.getoption('browser_name')
@@ -29,7 +29,6 @@ def browser(request):
             browser = webdriver.Firefox(options=options)
         case _:
             raise pytest.UsageError('--browser_name should be chrome or firefox')
-    browser.implicitly_wait(12)
     print('\n Start! \n')
     yield browser
     print('\n End! \n')
